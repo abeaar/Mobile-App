@@ -1,5 +1,21 @@
 import 'package:flutter/material.dart';
 
+// Simpan daftar user secara hardcoded
+class UserStorage {
+  static final List<Map<String, String>> _users = [
+    {'username': 'admin', 'password': '12345'} // Akun admin dummy
+  ];
+
+  static void addUser(String username, String password) {
+    _users.add({'username': username, 'password': password});
+  }
+
+  static bool validateUser(String username, String password) {
+    return _users.any(
+        (user) => user['username'] == username && user['password'] == password);
+  }
+}
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -11,21 +27,21 @@ class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  // Dummy data untuk login
-  final String _dummyUsername = "admin";
-  final String _dummyPassword = "12345";
+  bool _isPasswordVisible = false;
 
   void _login() {
     if (_formKey.currentState!.validate()) {
-      String inputUsername = _usernameController.text;
-      String inputPassword = _passwordController.text;
+      String inputUsername = _usernameController.text.trim();
+      String inputPassword = _passwordController.text.trim();
 
-      if (inputUsername == _dummyUsername && inputPassword == _dummyPassword) {
+      if (UserStorage.validateUser(inputUsername, inputPassword)) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Login berhasil!')),
         );
-        Navigator.pushReplacementNamed(context, '/home'); // Masuk ke HomePage
+
+        // ✅ Navigasi ke halaman home dengan username sebagai argumen
+        Navigator.pushReplacementNamed(context, '/home',
+            arguments: inputUsername);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -38,9 +54,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Halaman Login'),
-      ),
+      appBar: AppBar(title: const Text('Halaman Login')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -50,11 +64,10 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               TextFormField(
                 controller: _usernameController,
-                decoration: const InputDecoration(
-                  labelText: 'Nama Pengguna',
-                ),
+                decoration: const InputDecoration(labelText: 'Nama Pengguna'),
+                textInputAction: TextInputAction.next,
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
+                  if (value == null || value.trim().isEmpty) {
                     return 'Harap masukkan nama pengguna';
                   }
                   return null;
@@ -63,12 +76,23 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 16.0),
               TextFormField(
                 controller: _passwordController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Kata Sandi',
+                  suffixIcon: IconButton(
+                    icon: Icon(_isPasswordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    onPressed: () {
+                      setState(() {
+                        _isPasswordVisible = !_isPasswordVisible;
+                      });
+                    },
+                  ),
                 ),
-                obscureText: true,
+                obscureText: !_isPasswordVisible,
+                textInputAction: TextInputAction.done,
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
+                  if (value == null || value.trim().isEmpty) {
                     return 'Harap masukkan kata sandi';
                   }
                   return null;
@@ -82,7 +106,9 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 16.0),
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/register');
+                  if (ModalRoute.of(context)?.settings.name != '/register') {
+                    Navigator.pushNamed(context, '/register');
+                  }
                 },
                 child: const Text('Belum punya akun? Daftar di sini'),
               ),

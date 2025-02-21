@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final String username;
+
+  const HomePage({Key? key, required this.username}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Halaman Utama'),
+        title: Text('Halaman Utama - $username'), // Tambahkan nama user di header
         actions: [
           IconButton(
             icon: const Icon(Icons.exit_to_app),
@@ -17,10 +19,20 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text(
-          'Selamat datang di halaman utama!',
-          style: TextStyle(fontSize: 20),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Selamat datang, $username!',
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Anda telah berhasil masuk ke halaman utama.',
+              style: TextStyle(fontSize: 18),
+            ),
+          ],
         ),
       ),
     );

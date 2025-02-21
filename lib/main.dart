@@ -19,11 +19,39 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/home':
+            if (settings.arguments is String) {
+              final String username = settings.arguments as String;
+              return MaterialPageRoute(
+                builder: (context) => HomePage(username: username),
+              );
+            }
+            return MaterialPageRoute(
+              builder: (context) => const ErrorPage(),
+            );
+          default:
+            return null;
+        }
+      },
       routes: {
         '/': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
-        '/home': (context) => const HomePage(),
       },
+    );
+  }
+}
+
+// Buat halaman error jika argument salah
+class ErrorPage extends StatelessWidget {
+  const ErrorPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Error')),
+      body: const Center(child: Text('Terjadi kesalahan dalam navigasi.')),
     );
   }
 }
