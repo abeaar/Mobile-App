@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Aplikasi Login',
+      title: 'Tugas 1 TPM',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

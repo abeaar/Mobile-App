@@ -9,7 +9,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Halaman Utama - $username'), // Tambahkan nama user di header
+        title:
+            Text('Halaman Utama - $username'), // Tambahkan nama user di header
         actions: [
           IconButton(
             icon: const Icon(Icons.exit_to_app),

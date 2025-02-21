@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
           const SnackBar(content: Text('Login berhasil!')),
         );
 
-        // ✅ Navigasi ke halaman home dengan username sebagai argumen
+        // Navigasi ke halaman home dengan username sebagai argumen
         Navigator.pushReplacementNamed(context, '/home',
             arguments: inputUsername);
       } else {
@@ -54,7 +54,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Halaman Login')),
+      appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 106, 40, 160),
+          title: const Text(
+            'Simple App',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -62,9 +68,18 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              CircleAvatar(
+                backgroundImage: AssetImage(
+                    'assets/images/person1.jpg'), // Gambar dari assets
+                radius: 100, // Ukuran lingkaran
+              ),
+              SizedBox(height: 60.0),
               TextFormField(
                 controller: _usernameController,
-                decoration: const InputDecoration(labelText: 'Nama Pengguna'),
+                decoration: const InputDecoration(
+                  labelText: 'Nama Pengguna',
+                  border: OutlineInputBorder(),
+                ),
                 textInputAction: TextInputAction.next,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
@@ -78,6 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                 controller: _passwordController,
                 decoration: InputDecoration(
                   labelText: 'Kata Sandi',
+                  border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     icon: Icon(_isPasswordVisible
                         ? Icons.visibility

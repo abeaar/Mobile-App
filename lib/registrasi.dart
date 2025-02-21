@@ -44,7 +44,13 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Halaman Registrasi')),
+      appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 106, 40, 160),
+          title: const Text(
+            'Simple App',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -54,7 +60,8 @@ class _RegisterPageState extends State<RegisterPage> {
             children: <Widget>[
               TextFormField(
                 controller: _usernameController,
-                decoration: const InputDecoration(labelText: 'Nama Pengguna'),
+                decoration: const InputDecoration(
+                    labelText: 'Nama Pengguna', border: OutlineInputBorder()),
                 textInputAction: TextInputAction.next,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
@@ -68,6 +75,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _passwordController,
                 decoration: InputDecoration(
                   labelText: 'Kata Sandi',
+                  border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     icon: Icon(_isPasswordVisible
                         ? Icons.visibility
@@ -84,8 +92,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
                     return 'Harap masukkan kata sandi';
-                  } else if (value.length < 6) {
-                    return 'Kata sandi minimal 6 karakter';
+                  } else if (value.length < 6 && value.length > 10) {
+                    return 'Kata sandi minimal 6 karakter dan maksimal 10 karakter';
                   }
                   return null;
                 },
@@ -95,6 +103,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _confirmPasswordController,
                 decoration: InputDecoration(
                   labelText: 'Konfirmasi Kata Sandi',
+                  border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     icon: Icon(_isConfirmPasswordVisible
                         ? Icons.visibility
