@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
 
-import 'home.dart';
-import 'login.dart';
-import 'registrasi.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Aplikasi Login',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Halaman Utama'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.exit_to_app),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/'); // Logout ke login
+            },
+          ),
+        ],
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const LoginPage(),
-        '/register': (context) => const RegisterPage(),
-        '/home': (context) => const HomePage(),
-      },
+      body: const Center(
+        child: Text(
+          'Selamat datang di halaman utama!',
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
     );
   }
 }
