@@ -9,29 +9,68 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text('Halaman Utama - $username'), // Tambahkan nama user di header
+        backgroundColor: const Color.fromARGB(255, 106, 40, 160), // Warna sesuai dengan login
+        title: Text(
+          'Operasi Bilangan Sederhana - $username',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
         actions: [
           IconButton(
             icon: const Icon(Icons.exit_to_app),
             onPressed: () {
-              Navigator.pushReplacementNamed(context, '/'); // Logout ke login
+              Navigator.pushReplacementNamed(context, '/');
             },
           ),
         ],
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Selamat datang, $username!',
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          children: <Widget>[
+            const Text(
+              'Pilih Menu Operasi',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+            const SizedBox(height: 50),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/kalkulator');
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 106, 40, 160), // Sesuaikan warna
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                textStyle: const TextStyle(fontSize: 20),
+              ),
+              child: const Text('Kalkulator'),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Anda telah berhasil masuk ke halaman utama.',
-              style: TextStyle(fontSize: 18),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/menu2');
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 106, 40, 160), // Sesuaikan warna
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                textStyle: const TextStyle(fontSize: 20),
+              ),
+              child: const Text('Menu 2'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/menu3');
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 106, 40, 160), // Sesuaikan warna
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                textStyle: const TextStyle(fontSize: 20),
+              ),
+              child: const Text('Menu 3'),
             ),
           ],
         ),
