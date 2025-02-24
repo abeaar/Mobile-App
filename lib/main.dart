@@ -4,8 +4,6 @@ import 'home.dart';
 import 'kalkulator.dart';
 import 'login.dart';
 import 'registrasi.dart';
-import 'banyak_angka.dart';
-import 'ganjil_genap.dart';
 
 void main() {
   runApp(const MyApp());
