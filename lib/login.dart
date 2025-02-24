@@ -56,10 +56,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 106, 40, 160),
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           title: const Text(
             'Simple App',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Color.fromARGB(255, 106, 40, 160),
+                fontWeight: FontWeight.bold),
           ),
           centerTitle: true),
       body: SingleChildScrollView(
@@ -74,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                   backgroundImage: AssetImage('assets/images/person1.jpg'),
                   radius: 100,
                 ),
-                SizedBox(height: 60.0),
+                SizedBox(height: 40.0),
                 TextFormField(
                   controller: _usernameController,
                   decoration: const InputDecoration(

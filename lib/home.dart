@@ -7,17 +7,24 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String username =
+        ModalRoute.of(context)!.settings.arguments as String;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 106, 40, 160),
+        backgroundColor: Colors.white,
+        centerTitle: true, // Ganti background AppBar menjadi putih
         title: Text(
-          'Operasi Bilangan Sederhana - $username',
-          style:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          'Welcome $username',
+          style: const TextStyle(
+            color: Color.fromARGB(255, 106, 40, 160), // Ganti teks menjadi ungu
+            fontWeight: FontWeight.bold,
+          ),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.exit_to_app),
+            icon: const Icon(Icons.exit_to_app,
+                color: Color.fromARGB(255, 106, 40, 160)),
             onPressed: () {
               Navigator.pushReplacementNamed(context, '/');
             },
@@ -45,38 +52,12 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 40),
                 _buildMenuButton(context, 'Kalkulator', '/kalkulator'),
                 const SizedBox(height: 20),
-                _buildMenuButton(context, 'Menu 2', '/menu2'),
+                _buildMenuButton(context, 'Ganjil/Genap', '/ganjil_genap'),
                 const SizedBox(height: 20),
-                _buildMenuButton(context, 'Menu 3', '/menu3'),
+                _buildMenuButton(context, 'Banyak Angka', '/banyak_angka'),
               ],
             ),
-
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/ganjil_genap');
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 106, 40, 160), // Sesuaikan warna
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                textStyle: const TextStyle(fontSize: 20),
-              ),
-              child: const Text('Ganjil/Genap'),
-            ),
-
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/banyak_angka');
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 106, 40, 160), // Sesuaikan warna
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                textStyle: const TextStyle(fontSize: 20),
-              ),
-              child: const Text('Banyak Angka'),
-            ),
-          ],
+          ),
         ),
       ),
     );
