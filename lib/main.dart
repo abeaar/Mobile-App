@@ -10,11 +10,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Tugas 1 TPM',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
 
 // Buat halaman error jika argument salah
 class ErrorPage extends StatelessWidget {
-  const ErrorPage({Key? key}) : super(key: key);
+  const ErrorPage({super.key});
 
   @override
   Widget build(BuildContext context) {
