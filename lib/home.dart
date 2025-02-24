@@ -7,13 +7,16 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String username =
+      ModalRoute.of(context)!.settings.arguments as String;
+
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 106, 40, 160),
-          title: Text(
-            'Operasi Bilangan Sederhana - $username',
-            style: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold),
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 106, 40, 160),
+        title: Text(
+          'Operasi Bilangan Sederhana - $username',
+          style: const TextStyle(
+            color: Colors.white, fontWeight: FontWeight.bold),
           ),
           actions: [
             IconButton(
@@ -24,36 +27,37 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        body: Center(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  const Text(
-                    'Pilih Menu Operasi',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                    ),
-                    textAlign: TextAlign.center,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'Pilih Menu Operasi',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
                   ),
-                  const SizedBox(height: 40),
-                  _buildMenuButton(context, 'Kalkulator', '/kalkulator'),
-                  const SizedBox(height: 20),
-                  _buildMenuButton(
-                      context, 'Ganjil atau Genap', '/ganjil_genap'),
-                  const SizedBox(height: 20),
-                  _buildMenuButton(context, 'Banyak Angka', '/banyak_angka'),
-                ],
-              ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 40),
+                _buildMenuButton(context, 'Kalkulator', '/kalkulator'),
+                const SizedBox(height: 20),
+                _buildMenuButton(
+                  context, 'Ganjil atau Genap', '/ganjil_genap'),
+                const SizedBox(height: 20),
+                _buildMenuButton(context, 'Banyak Angka', '/banyak_angka'),
+              ],
             ),
           ),
-        ));
+        ),
+      )
+    );
   }
 
   Widget _buildMenuButton(BuildContext context, String label, String route) {
