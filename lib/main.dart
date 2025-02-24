@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'home.dart';
+import 'kalkulator.dart';
 import 'login.dart';
 import 'registrasi.dart';
-import 'kalkulator.dart';
 import 'ganjil_genap.dart';
 import 'banyak_angka.dart';
 
@@ -12,11 +12,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Tugas 1 TPM',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         '/kalkulator': (context) => const KalkulatorPage(),  // Rute untuk kalkulator
         '/ganjil_genap': (context) => GanjilGenap(),  // Rute untuk kalkulator
         '/banyak_angka': (context) => BanyakAngka(),  // Rute untuk kalkulator
+
       },
     );
   }
@@ -52,7 +54,7 @@ class MyApp extends StatelessWidget {
 
 // Buat halaman error jika argument salah
 class ErrorPage extends StatelessWidget {
-  const ErrorPage({Key? key}) : super(key: key);
+  const ErrorPage({super.key});
 
   @override
   Widget build(BuildContext context) {
