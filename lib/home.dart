@@ -36,15 +36,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-<<<<<<< HEAD
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const LoginPage(),
-        '/register': (context) => const RegisterPage(),
-        // '/home': (context) => const HomePage(),
-      },
-=======
->>>>>>> dc4dd2b1f1765446242e1bd07db8b7d566cacd22
+
     );
   }
 }
