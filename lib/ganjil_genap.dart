@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class NumberChecker extends StatefulWidget {
+class GanjilGenap extends StatefulWidget {
   @override
-  _NumberCheckerState createState() => _NumberCheckerState();
+  _GanjilGenapState createState() => _GanjilGenapState();
 }
 
-class _NumberCheckerState extends State<NumberChecker> {
+class _GanjilGenapState extends State<GanjilGenap> {
   final TextEditingController _controller = TextEditingController();
 
   void checkNumber() {
@@ -96,8 +96,8 @@ class _NumberCheckerState extends State<NumberChecker> {
   }
 }
 
-void main() {
-  runApp(MaterialApp(
-    home: NumberChecker(),
-  ));
-}
+// void main() {
+//   runApp(MaterialApp(
+//     home: GanjilGenap(),
+//   ));
+// }

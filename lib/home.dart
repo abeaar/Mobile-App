@@ -48,29 +48,31 @@ class HomePage extends StatelessWidget {
               ),
               child: const Text('Kalkulator'),
             ),
+
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/menu2');
+                Navigator.pushNamed(context, '/ganjil_genap');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 106, 40, 160), // Sesuaikan warna
                 padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 textStyle: const TextStyle(fontSize: 20),
               ),
-              child: const Text('Menu 2'),
+              child: const Text('Ganjil/Genap'),
             ),
+
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/menu3');
+                Navigator.pushNamed(context, '/banyak_angka');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 106, 40, 160), // Sesuaikan warna
                 padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 textStyle: const TextStyle(fontSize: 20),
               ),
-              child: const Text('Menu 3'),
+              child: const Text('Banyak Angka'),
             ),
           ],
         ),

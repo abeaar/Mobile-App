@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class NumberChecker extends StatefulWidget {
+class BanyakAngka extends StatefulWidget {
   @override
-  _NumberCheckerState createState() => _NumberCheckerState();
+  _BanyakAngkaState createState() => _BanyakAngkaState();
 }
 
-class _NumberCheckerState extends State<NumberChecker> {
+class _BanyakAngkaState extends State<BanyakAngka> {
   final TextEditingController _controller = TextEditingController();
   int totalNumbers = 0;
 
@@ -104,8 +104,8 @@ class _NumberCheckerState extends State<NumberChecker> {
   }
 }
 
-void main() {
-  runApp(MaterialApp(
-    home: NumberChecker(),
-  ));
-}
+// void main() {
+//   runApp(MaterialApp(
+//     home: NumberChecker(),
+//   ));
+// }
