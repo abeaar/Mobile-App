@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'home.dart';
+import 'kalkulator.dart';
 import 'login.dart';
 import 'registrasi.dart';
-import 'kalkulator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,8 +39,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
-        '/home': (context) => const HomePage(username: 'User'),  // Ganti sesuai nama pengguna
-        '/kalkulator': (context) => const KalkulatorPage(),  // Rute untuk kalkulator
+        '/home': (context) => const HomePage(username: 'User'),
+        '/kalkulator': (context) => const KalkulatorPage(),
       },
     );
   }
