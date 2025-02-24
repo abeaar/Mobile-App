@@ -75,7 +75,7 @@ class _KalkulatorPageState extends State<KalkulatorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 106, 40, 160),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         title: const Text('Kalkulator'),
       ),
       body: Padding(

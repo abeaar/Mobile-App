@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'login.dart';
 
@@ -62,6 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
             children: <Widget>[
               TextFormField(
                 controller: _usernameController,
+                inputFormatters: [LengthLimitingTextInputFormatter(20)],
                 decoration: const InputDecoration(
                     labelText: 'Nama Pengguna', border: OutlineInputBorder()),
                 textInputAction: TextInputAction.next,
@@ -75,6 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(height: 16.0),
               TextFormField(
                 controller: _passwordController,
+                inputFormatters: [LengthLimitingTextInputFormatter(10)],
                 decoration: InputDecoration(
                   labelText: 'Kata Sandi',
                   border: const OutlineInputBorder(),
@@ -94,8 +97,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
                     return 'Harap masukkan kata sandi';
-                  } else if (value.length < 6 && value.length > 10) {
-                    return 'Kata sandi minimal 6 karakter dan maksimal 10 karakter';
                   }
                   return null;
                 },
@@ -103,6 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(height: 16.0),
               TextFormField(
                 controller: _confirmPasswordController,
+                inputFormatters: [LengthLimitingTextInputFormatter(10)],
                 decoration: InputDecoration(
                   labelText: 'Konfirmasi Kata Sandi',
                   border: const OutlineInputBorder(),

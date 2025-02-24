@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class GanjilGenap extends StatefulWidget {
+  const GanjilGenap({super.key});
+
   @override
   _GanjilGenapState createState() => _GanjilGenapState();
 }

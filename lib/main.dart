@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'banyak_angka.dart';
+import 'ganjil_genap.dart';
 import 'home.dart';
 import 'kalkulator.dart';
 import 'login.dart';
@@ -40,10 +42,12 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
-        '/home': (context) => const HomePage(username: 'User'),  // Ganti sesuai nama pengguna
-        '/kalkulator': (context) => const KalkulatorPage(),  // Rute untuk kalkulator
-        '/ganjil_genap': (context) => GanjilGenap(),  // Rute untuk ganjil genap
-        '/banyak_angka': (context) => BanyakAngka(),  // Rute untuk kalkulator
+        '/home': (context) =>
+            const HomePage(username: 'User'), // Ganti sesuai nama pengguna
+        '/kalkulator': (context) =>
+            const KalkulatorPage(), // Rute untuk kalkulator
+        '/ganjil_genap': (context) => GanjilGenap(), // Rute untuk ganjil genap
+        '/banyak_angka': (context) => BanyakAngka(), // Rute untuk kalkulator
       },
     );
   }

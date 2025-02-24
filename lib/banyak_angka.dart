@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class BanyakAngka extends StatefulWidget {
+  const BanyakAngka({super.key});
+
   @override
   _BanyakAngkaState createState() => _BanyakAngkaState();
 }
