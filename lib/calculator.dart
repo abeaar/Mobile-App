@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'calc_buttons.dart';
+import 'buttons.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 void main() {
