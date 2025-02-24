@@ -8,37 +8,27 @@ class BanyakAngka extends StatefulWidget {
 
 class _BanyakAngkaState extends State<BanyakAngka> {
   final TextEditingController _controller = TextEditingController();
-  int totalNumbers = 0;
 
   void checkNumber() {
     String inputUser = _controller.text;
     if (inputUser.isEmpty) return;
 
-    List<String> numbers = inputUser.split(',');
-    totalNumbers = numbers.length;
-    
-    List<String> results = numbers.map((numStr) {
-      int? number = int.tryParse(numStr.trim());
-      if (number == null) return "$numStr (Invalid)";
-      return "$numStr: " + (number % 2 == 0 ? "Genap" : "Ganjil");
-    }).toList();
+    int count = inputUser.length;
+    String message = "Jumlah angka: $count";
 
-    String message = results.join('\n');
-    
+    // Munculkan Alert Dialog
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          "Hasil ($totalNumbers angka)",
+          "Hasil",
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700),
         ),
-        content: SingleChildScrollView(
-          child: Text(
-            message,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-          ),
+        content: Text(
+          message,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
         ),
         actions: [
           Center(
@@ -51,6 +41,7 @@ class _BanyakAngkaState extends State<BanyakAngka> {
       ),
     );
 
+    // Kosongkan input setelah submit
     _controller.clear();
   }
 
@@ -59,7 +50,7 @@ class _BanyakAngkaState extends State<BanyakAngka> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Cek Banyak Angka",
+          "Cek Jumlah Angka",
           style: TextStyle(fontWeight: FontWeight.w600, color: Colors.purple),
         ),
         centerTitle: true,
@@ -70,13 +61,14 @@ class _BanyakAngkaState extends State<BanyakAngka> {
           children: [
             TextField(
               controller: _controller,
-              keyboardType: TextInputType.text,
+              keyboardType: TextInputType.number,
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp(r'\d|,')),
+                FilteringTextInputFormatter.digitsOnly,
+                LengthLimitingTextInputFormatter(12),
               ],
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: "Masukkan angka (pisahkan dengan koma)",
+                labelText: "Masukkan angka",
               ),
             ),
             SizedBox(height: 20),
@@ -84,7 +76,7 @@ class _BanyakAngkaState extends State<BanyakAngka> {
               onPressed: checkNumber,
               icon: Icon(Icons.check, color: Colors.white),
               label: Text(
-                "Check",
+                "Hitung",
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
@@ -106,6 +98,6 @@ class _BanyakAngkaState extends State<BanyakAngka> {
 
 // void main() {
 //   runApp(MaterialApp(
-//     home: NumberChecker(),
+//     home: GanjilGenap(),
 //   ));
 // }

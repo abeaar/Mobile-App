@@ -8,78 +8,52 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 106, 40, 160),
-        title: Text(
-          'Operasi Bilangan Sederhana - $username',
-          style:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.exit_to_app),
-            onPressed: () {
-              Navigator.pushReplacementNamed(context, '/');
-            },
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 106, 40, 160),
+          title: Text(
+            'Operasi Bilangan Sederhana - $username',
+            style: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold),
           ),
-        ],
-      ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                  'Pilih Menu Operasi',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 40),
-                _buildMenuButton(context, 'Kalkulator', '/kalkulator'),
-                const SizedBox(height: 20),
-                _buildMenuButton(context, 'Menu 2', '/menu2'),
-                const SizedBox(height: 20),
-                _buildMenuButton(context, 'Menu 3', '/menu3'),
-              ],
-            ),
-
-            const SizedBox(height: 20),
-            ElevatedButton(
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.exit_to_app),
               onPressed: () {
-                Navigator.pushNamed(context, '/ganjil_genap');
+                Navigator.pushReplacementNamed(context, '/');
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 106, 40, 160), // Sesuaikan warna
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                textStyle: const TextStyle(fontSize: 20),
-              ),
-              child: const Text('Ganjil/Genap'),
-            ),
-
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/banyak_angka');
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 106, 40, 160), // Sesuaikan warna
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                textStyle: const TextStyle(fontSize: 20),
-              ),
-              child: const Text('Banyak Angka'),
             ),
           ],
         ),
-      ),
-    );
+        body: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    'Pilih Menu Operasi',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 40),
+                  _buildMenuButton(context, 'Kalkulator', '/kalkulator'),
+                  const SizedBox(height: 20),
+                  _buildMenuButton(
+                      context, 'Ganjil atau Genap', '/ganjil_genap'),
+                  const SizedBox(height: 20),
+                  _buildMenuButton(context, 'Banyak Angka', '/banyak_angka'),
+                ],
+              ),
+            ),
+          ),
+        ));
   }
 
   Widget _buildMenuButton(BuildContext context, String label, String route) {

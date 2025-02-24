@@ -13,8 +13,10 @@ class _GanjilGenapState extends State<GanjilGenap> {
     String inputUser = _controller.text;
     if (inputUser.isEmpty) return;
 
-    int count = inputUser.length;
-    String message = "Jumlah angka: $count";
+    int? number = int.tryParse(inputUser);
+    if (number == null) return;
+
+    String message = (number % 2 == 0) ? "Angka Genap" : "Angka Ganjil";
 
     // Munculkan Alert Dialog
     showDialog(
@@ -41,7 +43,7 @@ class _GanjilGenapState extends State<GanjilGenap> {
       ),
     );
 
-    // Kosongkan input setelah submit
+    // Kosongkan input setelah submit (opsional)
     _controller.clear();
   }
 
@@ -50,7 +52,7 @@ class _GanjilGenapState extends State<GanjilGenap> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Cek Jumlah Angka",
+          "Cek Ganjil Genap",
           style: TextStyle(fontWeight: FontWeight.w600, color: Colors.purple),
         ),
         centerTitle: true,
@@ -60,7 +62,7 @@ class _GanjilGenapState extends State<GanjilGenap> {
         child: Column(
           children: [
             TextField(
-              controller: _controller,
+              controller: _controller, // Tambahkan controller di sini
               keyboardType: TextInputType.number,
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly,
@@ -71,22 +73,25 @@ class _GanjilGenapState extends State<GanjilGenap> {
                 labelText: "Masukkan angka",
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 20), // Tambahkan jarak biar UI lebih rapi
             ElevatedButton.icon(
               onPressed: checkNumber,
-              icon: Icon(Icons.check, color: Colors.white),
+              icon:
+                  Icon(Icons.check, color: Colors.white), // Tambahin icon check
               label: Text(
-                "Hitung",
+                "Check",
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.purple,
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                foregroundColor: Colors.white, // Warna teks
+                backgroundColor: Colors.purple, // Warna background
+                padding: EdgeInsets.symmetric(
+                    horizontal: 24, vertical: 12), // Ukuran padding
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius:
+                      BorderRadius.circular(12), // Bikin rounded button
                 ),
-                elevation: 5,
+                elevation: 5, // efek shadow
               ),
             ),
           ],
@@ -95,9 +100,3 @@ class _GanjilGenapState extends State<GanjilGenap> {
     );
   }
 }
-
-// void main() {
-//   runApp(MaterialApp(
-//     home: GanjilGenap(),
-//   ));
-// }

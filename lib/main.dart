@@ -4,8 +4,8 @@ import 'home.dart';
 import 'kalkulator.dart';
 import 'login.dart';
 import 'registrasi.dart';
-import 'ganjil_genap.dart';
 import 'banyak_angka.dart';
+import 'ganjil_genap.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,9 +44,8 @@ class MyApp extends StatelessWidget {
         '/register': (context) => const RegisterPage(),
         '/home': (context) => const HomePage(username: 'User'),  // Ganti sesuai nama pengguna
         '/kalkulator': (context) => const KalkulatorPage(),  // Rute untuk kalkulator
-        '/ganjil_genap': (context) => GanjilGenap(),  // Rute untuk kalkulator
+        '/ganjil_genap': (context) => GanjilGenap(),  // Rute untuk ganjil genap
         '/banyak_angka': (context) => BanyakAngka(),  // Rute untuk kalkulator
-
       },
     );
   }
