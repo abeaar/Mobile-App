@@ -8,27 +8,37 @@ class NumberChecker extends StatefulWidget {
 
 class _NumberCheckerState extends State<NumberChecker> {
   final TextEditingController _controller = TextEditingController();
+  int totalNumbers = 0;
 
   void checkNumber() {
     String inputUser = _controller.text;
     if (inputUser.isEmpty) return;
 
-    int count = inputUser.length;
-    String message = "Jumlah angka: $count";
+    List<String> numbers = inputUser.split(',');
+    totalNumbers = numbers.length;
+    
+    List<String> results = numbers.map((numStr) {
+      int? number = int.tryParse(numStr.trim());
+      if (number == null) return "$numStr (Invalid)";
+      return "$numStr: " + (number % 2 == 0 ? "Genap" : "Ganjil");
+    }).toList();
 
-    // Munculkan Alert Dialog
+    String message = results.join('\n');
+    
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          "Hasil",
+          "Hasil ($totalNumbers angka)",
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700),
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
         ),
-        content: Text(
-          message,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+        content: SingleChildScrollView(
+          child: Text(
+            message,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+          ),
         ),
         actions: [
           Center(
@@ -41,7 +51,6 @@ class _NumberCheckerState extends State<NumberChecker> {
       ),
     );
 
-    // Kosongkan input setelah submit
     _controller.clear();
   }
 
@@ -50,7 +59,7 @@ class _NumberCheckerState extends State<NumberChecker> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Cek Jumlah Angka",
+          "Cek Banyak Angka",
           style: TextStyle(fontWeight: FontWeight.w600, color: Colors.purple),
         ),
         centerTitle: true,
@@ -61,14 +70,13 @@ class _NumberCheckerState extends State<NumberChecker> {
           children: [
             TextField(
               controller: _controller,
-              keyboardType: TextInputType.number,
+              keyboardType: TextInputType.text,
               inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-                LengthLimitingTextInputFormatter(12),
+                FilteringTextInputFormatter.allow(RegExp(r'\d|,')),
               ],
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: "Masukkan angka",
+                labelText: "Masukkan angka (pisahkan dengan koma)",
               ),
             ),
             SizedBox(height: 20),
@@ -76,7 +84,7 @@ class _NumberCheckerState extends State<NumberChecker> {
               onPressed: checkNumber,
               icon: Icon(Icons.check, color: Colors.white),
               label: Text(
-                "Hitung",
+                "Check",
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
