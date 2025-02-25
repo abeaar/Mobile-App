@@ -47,12 +47,14 @@ class HomePage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 40),
-                  _buildMenuButton(context, 'Kalkulator', '/kalkulator'),
+                  _buildMenuButton(
+                      context, 'Kalkulator', '/kalkulator', Icons.calculate),
+                  const SizedBox(height: 20),
+                  _buildMenuButton(context, 'Ganjil atau Genap',
+                      '/ganjil_genap', Icons.format_list_numbered),
                   const SizedBox(height: 20),
                   _buildMenuButton(
-                      context, 'Ganjil atau Genap', '/ganjil_genap'),
-                  const SizedBox(height: 20),
-                  _buildMenuButton(context, 'Banyak Angka', '/banyak_angka'),
+                      context, 'Banyak Angka', '/banyak_angka', Icons.numbers),
                 ],
               ),
             ),
@@ -60,24 +62,31 @@ class HomePage extends StatelessWidget {
         ));
   }
 
-  Widget _buildMenuButton(BuildContext context, String label, String route) {
-  return SizedBox(
-    width: 250,
-    child: ElevatedButton(
-      onPressed: () {
-        Navigator.pushNamed(context, route);
-      },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: const Color.fromARGB(255, 106, 40, 160),
-        padding: const EdgeInsets.symmetric(vertical: 15),
-        textStyle: const TextStyle(fontSize: 20),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+  Widget _buildMenuButton(
+      BuildContext context, String label, String route, IconData icon) {
+    return SizedBox(
+      width: 250,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.pushNamed(context, route);
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color.fromARGB(255, 106, 40, 160),
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          textStyle: const TextStyle(fontSize: 20),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: Colors.white), // Tambahkan ikon di sini
+            const SizedBox(width: 10), // Beri jarak antara ikon dan teks
+            Text(label, style: const TextStyle(color: Colors.white)),
+          ],
         ),
       ),
-      child: Text(label, style: const TextStyle(color: Colors.white)),
-    ),
-  );
-}
-
+    );
+  }
 }
