@@ -48,7 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           title: const Text(
-            'Simple App',
+            'Simple Math App',
             style: TextStyle(
                 color: Color.fromARGB(255, 106, 40, 160),
                 fontWeight: FontWeight.bold),

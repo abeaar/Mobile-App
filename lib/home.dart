@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blue,
+                      color: Color.fromARGB(255, 106, 40, 160),
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -61,22 +61,23 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildMenuButton(BuildContext context, String label, String route) {
-    return SizedBox(
-      width: 250,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.pushNamed(context, route);
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color.fromARGB(255, 106, 40, 160),
-          padding: const EdgeInsets.symmetric(vertical: 15),
-          textStyle: const TextStyle(fontSize: 20),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
+  return SizedBox(
+    width: 250,
+    child: ElevatedButton(
+      onPressed: () {
+        Navigator.pushNamed(context, route);
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color.fromARGB(255, 106, 40, 160),
+        padding: const EdgeInsets.symmetric(vertical: 15),
+        textStyle: const TextStyle(fontSize: 20),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
         ),
-        child: Text(label, style: const TextStyle(color: Colors.white)),
       ),
-    );
-  }
+      child: Text(label, style: const TextStyle(color: Colors.white)),
+    ),
+  );
+}
+
 }
