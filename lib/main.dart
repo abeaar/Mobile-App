@@ -11,9 +11,14 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,7 +52,7 @@ class MyApp extends StatelessWidget {
         '/kalkulator': (context) =>
             const KalkulatorPage(), // Rute untuk kalkulator
         '/ganjil_genap': (context) => GanjilGenap(), // Rute untuk ganjil genap
-        '/banyak_angka': (context) => BanyakAngka(), // Rute untuk kalkulator
+        '/banyak_angka': (context) => BanyakAngka(), // Rute untuk banyak angka
       },
     );
   }
