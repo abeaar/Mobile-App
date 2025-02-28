@@ -55,7 +55,7 @@ class _GanjilGenapState extends State<GanjilGenap> {
       appBar: AppBar(
         title: Text(
           "Cek Ganjil Genap",
-          style: TextStyle(fontWeight: FontWeight.w600, color: Colors.purple),
+          style: TextStyle(fontWeight: FontWeight.w600, color: const Color.fromARGB(255, 106, 40, 160)),
         ),
         centerTitle: true,
       ),
@@ -86,7 +86,7 @@ class _GanjilGenapState extends State<GanjilGenap> {
               ),
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white, // Warna teks
-                backgroundColor: Colors.purple, // Warna background
+                backgroundColor: const Color.fromARGB(255, 106, 40, 160), // Warna background
                 padding: EdgeInsets.symmetric(
                     horizontal: 24, vertical: 12), // Ukuran padding
                 shape: RoundedRectangleBorder(

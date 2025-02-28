@@ -53,7 +53,7 @@ class _BanyakAngkaState extends State<BanyakAngka> {
       appBar: AppBar(
         title: Text(
           "Cek Jumlah Angka",
-          style: TextStyle(fontWeight: FontWeight.w600, color: Colors.purple),
+          style: TextStyle(fontWeight: FontWeight.w600, color: const Color.fromARGB(255, 106, 40, 160)),
         ),
         centerTitle: true,
       ),
@@ -83,7 +83,7 @@ class _BanyakAngkaState extends State<BanyakAngka> {
               ),
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.purple,
+                backgroundColor: const Color.fromARGB(255, 106, 40, 160),
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
