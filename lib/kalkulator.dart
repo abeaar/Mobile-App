@@ -13,7 +13,7 @@ class _KalkulatorPageState extends State<KalkulatorPage> {
   String answer = '0';
 
   final List<String> buttons = [
-    'C', '+/-', '%', 'DEL',
+    'C', '', '', 'DEL',
     '7', '8', '9', '/',
     '4', '5', '6', 'x',
     '1', '2', '3', '-',
