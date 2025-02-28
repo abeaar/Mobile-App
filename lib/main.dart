@@ -6,6 +6,7 @@ import 'home.dart';
 import 'kalkulator.dart';
 import 'login.dart';
 import 'registrasi.dart';
+import 'team.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,6 +50,7 @@ class _MyAppState extends State<MyApp> {
         '/register': (context) => const RegisterPage(),
         '/home': (context) =>
             const HomePage(username: 'User'), // Ganti sesuai nama pengguna
+        '/team': (context) => MyTeam(), // Rute untuk ganjil genap
         '/kalkulator': (context) =>
             const KalkulatorPage(), // Rute untuk kalkulator
         '/ganjil_genap': (context) => GanjilGenap(), // Rute untuk ganjil genap

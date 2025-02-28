@@ -47,6 +47,8 @@ class HomePage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 40),
+                  _buildMenuButton(context, 'Team', '/team', Icons.people),
+                  const SizedBox(height: 20),
                   _buildMenuButton(
                       context, 'Kalkulator', '/kalkulator', Icons.calculate),
                   const SizedBox(height: 20),
